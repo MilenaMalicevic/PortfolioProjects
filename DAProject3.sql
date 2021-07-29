@@ -199,8 +199,8 @@ from nashvillehousing;
     
 select soldAsVacant,
 	case soldAsVacant
-		 when 'Y' 
-			then 'Yes'
+	 when 'Y' 
+	    then 'Yes'
          when 'N' 
             then 'No'
          when 'Yes' 
@@ -254,19 +254,18 @@ ORDER BY PropertyAddress;
 DELETE 
 from nashvillehousing
 where uniqueID_ in (  with RowNumCTE AS(
-						select nvh.*, 
-							row_number() over (
-								partition by parcelID,
-											 propertyAddress,
-											 salePrice,
-											 saleDate,
-											 legalReference
-								ORDER BY uniqueID_)
-							as row_num
-							from nashvillehousing nvh)
-						select uniqueID_
-						from RowNumCTE
-						where row_num > 1 );
+			select nvh.*, row_number() over (
+				partition by parcelID,
+					     propertyAddress,
+		                  	     salePrice,
+			                     saleDate,
+      	      				     legalReference
+			ORDER BY uniqueID_)				
+			as row_num
+			from nashvillehousing nvh)
+			select uniqueID_
+			from RowNumCTE
+			where row_num > 1 );
     
     
     
