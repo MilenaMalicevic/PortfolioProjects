@@ -13,7 +13,7 @@ select location, dan, total_cases, new_cases, total_deaths, population
 from covid_deaths where continent is not null
 order by 1,2;
 
---Broj preminulih u odnosu na ukupan broj zaraženih (prikaz vjerovatnoće smrtnosti u našoj državi)
+--Broj preminulih u odnosu na ukupan broj zaraženih (prikaz procenta smrtnosti u našoj državi) po danima (tj. do datog dana)
 select location, dan, total_cases, new_cases, total_deaths, (total_deaths/total_cases)*100 as DeathPercentage
 from covid_deaths
 where location like '%Bos%' and continent is not null
