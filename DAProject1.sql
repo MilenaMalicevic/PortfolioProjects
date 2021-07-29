@@ -4,6 +4,11 @@ select *
 from COVID_DEATHS
 order by 3,4;
 
+--Uvid u tabelu COVID_VACCINATIONS
+select * 
+from COVID_VACCINATIONS
+order by 3,4;
+
 select location, dan, total_cases, new_cases, total_deaths, population
 from covid_deaths where continent is not null
 order by 1,2;
