@@ -286,8 +286,8 @@ drop  (OwnerAddress, TaxDistrict, PropertyAddress);
 
 --Brisanje kolone saleDate
 
-alter table nashvillehousing
-drop  column SaleDate;
+--alter table nashvillehousing
+--drop  column SaleDate;
 
 
 
