@@ -32,14 +32,7 @@ where total_cases is not NULL and continent is not null
 group by location, population
 order by 4 desc;
 
---Ukupan broj preminulih po kontinentima (upit nije vjerodostojan, jer u tabeli mogu postojati države za koje nije unesen kontinent)
-select continent,  MAX(total_deaths) as TotalDeathsCount
-from covid_deaths
-where total_deaths is not NULL and continent is not  NULL
-group by continent
-order by 2 desc;
-
---Ukupan broj preminulih po kontinentima (upit koji vraća pravi rezultat)
+--Ukupan broj preminulih po kontinentima
 select location,  MAX(total_deaths) as TotalDeathsCount
 from covid_deaths
 where total_deaths is not NULL and continent is  NULL
