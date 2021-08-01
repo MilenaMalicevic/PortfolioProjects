@@ -82,7 +82,7 @@ where dea.continent is not null)
 select continent, location, dan, population, new_vaccinations, rolling_people_vaccinated, (rolling_people_vaccinated/population)*100
 from pop_vs_vac;
 
---Kreiramo tabelu pomoću koje se može odrediti procenat vakcinisanih
+--Kreiramo tabelu pomoću koje se može odrediti procenat vakcinisanih za svaku lokaciju (državu, kontinent)
 create table percent_population_vaccinated
 (continent varchar2(26),
 location varchar2(200),
@@ -102,7 +102,7 @@ on dea.location = vac.location and dea.dan = vac.dan;
 select continent, location, dan, population, new_vaccinations, rolling_people_vaccinated, (rolling_people_vaccinated/population)*100
 from percent_population_vaccinated;
 
---Kreiranje pogleda za čuvanje podataka za kasniju vizualizaciju
+--Kreiranje pogleda za čuvanje podataka za kasniju vizualizaciju (procenat vakcinisanih po danima za svaku državu)
 create view percent_population_vaccinated_v as
 select dea.continent, dea.location, dea.dan, dea.population, vac.new_vaccinations, sum(vac.new_vaccinations) over (partition by dea.location order by dea.location, dea.dan) as rolling_people_vaccinated
 from covid_deaths dea join covid_vaccinations vac 
